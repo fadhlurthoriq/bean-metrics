@@ -277,7 +277,7 @@ div[data-baseweb="select"] svg { fill: var(--text2) !important; }
 # =========================
 @st.cache_resource(show_spinner=False)
 def load_model():
-    df = pd.read_excel("data/coffee_shop.xlsx")
+    df = pd.read_excel("data/drinks_data.xlsx")
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
     df['transaction_time'] = pd.to_datetime(df['transaction_time'], errors='coerce')
     df['transaction_date'] = pd.to_datetime(df['transaction_date'], errors='coerce')
@@ -422,7 +422,7 @@ if model_loaded:
 
         cr = st.columns(3, gap="medium")
         for i, ((h, qty, omzet),(lab,cls),icon) in enumerate(zip(hasil, labels, icons)):
-            h_idr = int(h*17000); q_int = int(qty); o_idr = int(omzet*17000)
+            h_idr = int(h*1000); q_int = int(qty); o_idr = int(omzet*1000)
             with cr[i]:
                 st.markdown(f"""
                 <div class="result-card {cls}">
@@ -437,7 +437,7 @@ if model_loaded:
                 </div>
                 """, unsafe_allow_html=True)
 
-        best_h = int(hasil[1][0]*17000); best_o = int(hasil[1][2]*17000)
+        best_h = int(hasil[1][0]*1000); best_o = int(hasil[1][2]*1000)
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown('<div class="section-label"><span class="sl-num">03</span> — Ringkasan</div>', unsafe_allow_html=True)
         st.markdown(f"""

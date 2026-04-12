@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 # =========================
 # LOAD DATA
 # =========================
-df = pd.read_excel("data/coffee_shop.xlsx")
+df = pd.read_excel("data/drinks_data.xlsx")
 
 # bersihin nama kolom (WAJIB)
 df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
@@ -174,7 +174,7 @@ print("\n=== REKOMENDASI HARGA ===\n")
 
 for i, (harga, qty, omzet) in enumerate(hasil):
     print(label[i])
-    print(f"Harga   : Rp {int(harga * 17000):,}")
+    print(f"Harga   : Rp {int(harga * 1000):,}")
     print(f"Terjual : {int(qty)} cup/bulan")
-    print(f"Omset   : Rp {int(omzet * 17000):,}")
+    print(f"Omset   : Rp {int(omzet * 1000):,}")
     print("-" * 30)
